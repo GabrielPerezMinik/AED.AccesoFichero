@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane fx:id="splitpaneMain" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="ubicacionFicheroText">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button fx:id="verFicheroCarpetasButton" mnemonicParsing="false" text="Ver ficheros y carpetas">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Separator prefWidth="200.0" />
+                  <ListView fx:id="listadoIzquierdaFicheroListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <HBox>
+                     <children>
+                        <Button fx:id="crearButton" mnemonicParsing="false" text="Crear" />
+                        <HBox HBox.hgrow="ALWAYS" />
+                        <Button fx:id="moverButton" mnemonicParsing="false" text="Mover" />
+                        <HBox HBox.hgrow="ALWAYS" />
+                        <Button fx:id="eliminarButton" alignment="CENTER" mnemonicParsing="false" text="Eliminar" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="modificarView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <center>
+            <ListView fx:id="ficherosList" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="cancelarButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Cancelar" />
+                  <HBox HBox.hgrow="ALWAYS" />
+                  <Button fx:id="confirmarButton" mnemonicParsing="false" text="Confirmar" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </bottom>
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="modificarText" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/flechaAtras.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+  </items>
+</SplitPane>
