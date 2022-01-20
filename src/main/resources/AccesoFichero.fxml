@@ -34,7 +34,7 @@
                      <children>
                         <Button fx:id="crearButton" mnemonicParsing="false" text="Crear" />
                         <HBox HBox.hgrow="ALWAYS" />
-                        <Button fx:id="moverButton" mnemonicParsing="false" text="Mover" />
+                        <Button fx:id="moverButton" mnemonicParsing="false" onAction="#moverOnAction" text="Mover" />
                         <HBox HBox.hgrow="ALWAYS" />
                         <Button fx:id="eliminarButton" alignment="CENTER" mnemonicParsing="false" onAction="#EliminarOnAction" text="Eliminar" />
                      </children>

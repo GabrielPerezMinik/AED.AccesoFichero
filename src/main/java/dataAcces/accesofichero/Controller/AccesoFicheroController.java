@@ -3,6 +3,7 @@ package dataAcces.accesofichero.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 import dataAcces.accesofichero.Model.AccesoFicheroModelo;
 import javafx.event.ActionEvent;
@@ -119,7 +120,7 @@ public class AccesoFicheroController implements Initializable{
 	 }
 	
 	 @FXML
-	 void moverOnAction(ActionEvent event) {
+	 void moverOnAction(ActionEvent event) throws IOException {
 
 		 File moverAlDirectorio=acceso.getFichero();
 		 File directorioDestino;
@@ -130,7 +131,14 @@ public class AccesoFicheroController implements Initializable{
 
 		directorioDestino=directorio.showDialog(splitpaneMain.getContextMenu());
 		 
+		mover(moverAlDirectorio, directorioDestino);
+		
 	    }
+	private void mover(File moverAlDirectorio, File directorioDestino) throws IOException {
+		if(moverAlDirectorio.isFile()) {
+			Files.move(acceso.getFichero().toPath(),directorioDestino.toPath());
+		}
+	}
 	
 	 @FXML
 	 void CrearOnAction(ActionEvent event) {
