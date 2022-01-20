@@ -55,7 +55,7 @@ public class AccesoFicheroController implements Initializable{
     private Button confirmarButton;
 
     @FXML
-    private ListView<File> ficherosList;
+    private ListView<File> ficherosListDerecho;
 
     @FXML
     private TextField modificarText;
@@ -72,7 +72,7 @@ public class AccesoFicheroController implements Initializable{
 		
 		ubicacionFicheroText.textProperty().bindBidirectional(acceso.rutaActualProperty());
 		listadoIzquierdaFicheroListView.itemsProperty().bind(acceso.listadoIzquierdoProperty());
-		ficherosList.itemsProperty().bind(acceso.listadoDerechoProperty());
+		ficherosListDerecho.itemsProperty().bind(acceso.listadoDerechoProperty());
 		modificarText.textProperty().bindBidirectional(acceso.subRutaProperty());
 		
 		////////////////////////////////////////////////////////
@@ -93,9 +93,11 @@ public class AccesoFicheroController implements Initializable{
 	 @FXML
 	    void onClickListadoDerecho(MouseEvent event) {
 
-		  if(null!=acceso.getFichero().getParent()) {
+		 
 			 
-		  }
+			  acceso.setSubRuta(ficherosListDerecho.getSelectionModel().getSelectedItem().getAbsolutePath());
+			  
+		  
 		  
 	    }
 	
@@ -103,7 +105,7 @@ public class AccesoFicheroController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		splitpaneMain.getItems().remove(modificarView);
 		acceso.setRutaActual(System.getProperty("user.home"));
-		 acceso.setFichero(new File(acceso.getRutaActual()));
+		acceso.setFichero(new File(acceso.getRutaActual()));
 		acceso.getListadoIzquierdo().addAll(acceso.getFichero().listFiles());
 		
 	}
@@ -162,7 +164,7 @@ public class AccesoFicheroController implements Initializable{
 	    }
 	 
 	 @FXML
-	    void onClickListener(MouseEvent event) {
+	    void onClickListenerIzquierdo(MouseEvent event) {
 		 if(!splitpaneMain.getItems().contains(modificarView)) {
 			 splitpaneMain.getItems().add(modificarView);
 		 }

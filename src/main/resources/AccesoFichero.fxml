@@ -29,7 +29,7 @@
                      </VBox.margin>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <ListView fx:id="listadoIzquierdaFicheroListView" onMouseClicked="#onClickListener" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="listadoIzquierdaFicheroListView" onMouseClicked="#onClickListenerIzquierdo" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <HBox>
                      <children>
                         <Button fx:id="crearButton" mnemonicParsing="false" text="Crear" />
@@ -45,7 +45,7 @@
       </BorderPane>
       <BorderPane fx:id="modificarView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <center>
-            <ListView fx:id="ficherosList" onMouseClicked="#onClickListadoDerecho" BorderPane.alignment="CENTER" />
+            <ListView fx:id="ficherosListDerecho" onMouseClicked="#onClickListadoDerecho" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <HBox BorderPane.alignment="CENTER">
@@ -62,7 +62,7 @@
          <top>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="modificarText" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="modificarText" editable="false" HBox.hgrow="ALWAYS" />
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackAction">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
