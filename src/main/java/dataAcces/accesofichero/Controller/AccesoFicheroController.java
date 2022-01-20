@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
@@ -47,12 +48,6 @@ public class AccesoFicheroController implements Initializable{
     private Button verFicheroCarpetasButton;
     
     //vistaSubcarpeta
-    
-    @FXML
-    private Button cancelarButton;
-
-    @FXML
-    private Button confirmarButton;
 
     @FXML
     private ListView<File> ficherosListDerecho;
@@ -78,7 +73,7 @@ public class AccesoFicheroController implements Initializable{
 		////////////////////////////////////////////////////////
 		
 		acceso.subRutaProperty().addListener(o->OnActualizarSubRuta());
-	//	acceso.listadoDerechoProperty().addListener(o->onClickListadoDerecho(null));
+		//acceso.subRutaProperty().addListener(o->onClickListadoDerecho(null));
 		
 	}
 	private void OnActualizarSubRuta() {
@@ -91,14 +86,8 @@ public class AccesoFicheroController implements Initializable{
 	
 	
 	 @FXML
-	    void onClickListadoDerecho(MouseEvent event) {
-
-		 
-			 
-			  acceso.setSubRuta(ficherosListDerecho.getSelectionModel().getSelectedItem().getAbsolutePath());
-			  
-		  
-		  
+	    void onClickListadoDerecho(MouseEvent event) {		 
+			  acceso.setSubRuta(ficherosListDerecho.getSelectionModel().getSelectedItem().getAbsolutePath());	  
 	    }
 	
 	
@@ -115,15 +104,12 @@ public class AccesoFicheroController implements Initializable{
 		return splitpaneMain;
 	}
 	
-	@FXML
-	void cancelarButtonOnAction(ActionEvent event) {
-		
-	}
 	
 	 @FXML
 	 void verFicherosOnAction(ActionEvent event) {
 
 		 try {
+			 acceso.getListadoIzquierdo().clear();
 		 acceso.setFichero(new File(acceso.getRutaActual()));
 			acceso.getListadoIzquierdo().addAll(acceso.getFichero().listFiles());
 	    }
@@ -135,6 +121,14 @@ public class AccesoFicheroController implements Initializable{
 	 @FXML
 	 void moverOnAction(ActionEvent event) {
 
+		 File moverAlDirectorio=acceso.getFichero();
+		 File directorioDestino;
+		 
+		 DirectoryChooser directorio=new DirectoryChooser();
+		 
+		 directorio.setTitle("Ruta destino: ");
+
+		directorioDestino=directorio.showDialog(splitpaneMain.getContextMenu());
 		 
 	    }
 	
@@ -148,8 +142,25 @@ public class AccesoFicheroController implements Initializable{
 	 @FXML
 	 void EliminarOnAction(ActionEvent event) {
 
+		 File aux;
+		 aux=acceso.getFichero().getParentFile();
+		 eliminar(acceso.getFichero());
+		 acceso.setSubRuta(aux.getAbsolutePath());
 		 
 	    }
+	private void eliminar(File fileABorrar) {
+		if(fileABorrar.isFile()) {
+			 
+			 fileABorrar.delete();
+			 
+		 }
+		 else {
+			for (File subFileABorrar : fileABorrar.listFiles()) {
+				eliminar(subFileABorrar);
+			}
+			fileABorrar.delete();
+		 }
+	}
 	 
 	 @FXML
 	 void confirmarOnAction(ActionEvent event) {
