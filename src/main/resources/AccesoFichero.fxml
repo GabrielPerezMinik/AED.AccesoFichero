@@ -14,22 +14,22 @@
 
 <SplitPane fx:id="splitpaneMain" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <items>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="ubicacionFicheroText">
+                  <TextField fx:id="ubicacionFicheroText" onKeyPressed="#enterPressed">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="verFicheroCarpetasButton" mnemonicParsing="false" text="Ver ficheros y carpetas">
+                  <Button fx:id="verFicheroCarpetasButton" mnemonicParsing="false" onAction="#verFicherosOnAction" text="Ver ficheros y carpetas">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <ListView fx:id="listadoIzquierdaFicheroListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="listadoIzquierdaFicheroListView" onMouseClicked="#onClickListener" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <HBox>
                      <children>
                         <Button fx:id="crearButton" mnemonicParsing="false" text="Crear" />
@@ -45,7 +45,7 @@
       </BorderPane>
       <BorderPane fx:id="modificarView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <center>
-            <ListView fx:id="ficherosList" BorderPane.alignment="CENTER" />
+            <ListView fx:id="ficherosList" onMouseClicked="#onClickListadoDerecho" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <HBox BorderPane.alignment="CENTER">
@@ -63,7 +63,7 @@
             <HBox BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="modificarText" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackAction">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
                            <image>

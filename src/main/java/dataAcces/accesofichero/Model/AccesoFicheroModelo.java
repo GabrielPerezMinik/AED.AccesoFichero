@@ -6,14 +6,15 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class AccesoFicheroModelo {
 
 	private StringProperty rutaActual=new SimpleStringProperty(); 
 	private StringProperty subRuta=new SimpleStringProperty();
-	private ListProperty<File> listadoIzquierdo=new SimpleListProperty<File>();
-	private ListProperty<File> listadoDerecho= new SimpleListProperty<File>();
+	private ListProperty<File> listadoIzquierdo=new SimpleListProperty<File>(FXCollections.observableArrayList());
+	private ListProperty<File> listadoDerecho= new SimpleListProperty<File>(FXCollections.observableArrayList());
 	File fichero;
 	
 	
